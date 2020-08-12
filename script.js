@@ -36,8 +36,8 @@ $(document.body).ready(function() {
 
 
         $(document).on("click", "li" , function() {
-            console.log("It'll work!");
             var i = $(this).attr("data-index");
+
             $("#main-city").text(weatherStorage[i].location);
 
             var fig0 = weatherStorage[i].daily[0].weather[0].icon;
@@ -56,6 +56,31 @@ $(document.body).ready(function() {
             } else {
                 $("#uv").attr("class", "badge badge-danger");
             }
+
+            var fig1 = weatherStorage[i].daily[1].weather[0].icon;
+            $("#fig1").attr("src", `http://openweathermap.org/img/w/${fig1}.png`)
+            $("#temp1").text(weatherStorage[i].daily[1].temp.max);
+            $("#humid1").text(weatherStorage[i].daily[1].humidity);
+
+            var fig2 = weatherStorage[i].daily[2].weather[0].icon;
+            $("#fig2").attr("src", `http://openweathermap.org/img/w/${fig2}.png`)
+            $("#temp2").text(weatherStorage[i].daily[2].temp.max);
+            $("#humid2").text(weatherStorage[i].daily[2].humidity);
+            
+            var fig3 = weatherStorage[i].daily[3].weather[0].icon;
+            $("#fig3").attr("src", `http://openweathermap.org/img/w/${fig3}.png`)
+            $("#temp3").text(weatherStorage[i].daily[3].temp.max);
+            $("#humid3").text(weatherStorage[i].daily[3].humidity);
+
+            var fig4 = weatherStorage[i].daily[4].weather[0].icon;
+            $("#fig4").attr("src", `http://openweathermap.org/img/w/${fig4}.png`)
+            $("#temp4").text(weatherStorage[i].daily[4].temp.max);
+            $("#humid4").text(weatherStorage[i].daily[4].humidity);
+
+            var fig5 = weatherStorage[i].daily[5].weather[0].icon;
+            $("#fig5").attr("src", `http://openweathermap.org/img/w/${fig5}.png`)
+            $("#temp5").text(weatherStorage[i].daily[5].temp.max);
+            $("#humid5").text(weatherStorage[i].daily[5].humidity);
         })
     }
 
