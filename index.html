@@ -12,7 +12,7 @@
 <body>
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand mx-auto" href="#">
-        <img src="https://img.pngio.com/cloud-cloudy-sun-sunny-weather-icon-weather-icons-png-512_512.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+        <img src="Assets/cloud-cloudy-sun-sunny-weather-icon-weather-icons-png-512_512.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
             Weather Dashboard
         </a>
     </nav>
@@ -26,7 +26,7 @@
                     </div>
                     <div class="row mx-auto">
                         <input class="form-control" id="searchcity" style="max-width: 75%;">
-                        <button type="submit" class="btn btn-primary" style="width: 20%; margin-left: 5%; height: 38px;"><img class="icon mx-auto" src="https://www.iconsdb.com/icons/preview/white/search-13-xxl.png" style="max-height: 100%;"></button>
+                        <button id="searchbutton" type="submit" class="btn btn-primary" style="width: 20%; margin-left: 5%; height: 38px;"><img class="icon mx-auto" src="https://www.iconsdb.com/icons/preview/white/search-13-xxl.png" style="max-height: 100%;"></button>
                     </div>
                 </form>
                 <div class="card mx-auto list" style="margin-top: 20px;">
@@ -102,5 +102,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <script src="script.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initialize&key=AIzaSyCVgy0PNDkcyuJqKIbFbXEOdho0ydEQ9yo&libraries=geometry"></script>
 </body>
 </html>
