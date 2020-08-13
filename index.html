@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
-    
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <!-- Navbar -->
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand mx-auto" href="#">
-        <img src="Assets/cloud-cloudy-sun-sunny-weather-icon-weather-icons-png-512_512.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+        <a class="navbar-brand mx-auto text-white">
+            <img src="Assets/cloud-cloudy-sun-sunny-weather-icon-weather-icons-png-512_512.png" width="30" height="30"
+                class="d-inline-block align-top" alt="" loading="lazy">
             Weather Dashboard
         </a>
     </nav>
 
     <div class="container no-gutters" style="max-width: 100%;">
         <div class="row">
+
+            <!-- Sidebar -->
             <div class="col-12 col-md-3" style="margin-top: 20px;">
                 <form>
                     <div class="row mx-auto">
@@ -25,27 +34,44 @@
                     </div>
                     <div class="row mx-auto">
                         <input class="form-control" id="searchcity" style="max-width: 75%;">
-                        <button id="searchbutton" type="submit" class="btn btn-primary" style="width: 20%; margin-left: 5%; height: 38px;"><img class="icon mx-auto" src="https://www.iconsdb.com/icons/preview/white/search-13-xxl.png" style="max-height: 100%;"></button>
+                        <button id="searchbutton" type="submit" class="btn btn-primary"
+                            style="width: 20%; margin-left: 5%; height: 38px;"><img class="icon mx-auto"
+                                src="https://www.iconsdb.com/icons/preview/white/search-13-xxl.png"
+                                style="max-height: 100%;"></button>
                     </div>
                 </form>
                 <div class="card mx-auto list" style="margin-top: 20px;">
                     <ul id="side-city" class="list-group list-group-flush">
-                    
+                        <!-- City names will appear here -->
                     </ul>
                 </div>
+
+                <!-- Hidden spinner, will display when loading -->
+                <div id="spinner" class="text-center" style="display: none;">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
             </div>
+
+            <!-- Main section -->
             <div id="display" class="col-12 col-md-9" style="margin-top: 20px; display: none;">
+
+                <!-- Current Day -->
                 <div class="row mx-auto">
-                    <div class="card mb-3" style="height: 100%; width: 100%;">
+                    <div id="main-card" class="card mb-3" style="height: 100%; width: 100%;">
                         <div class="card-body">
-                            <h3><a id="main-city" class="card-title"></a> (<a id="day0"></a>) <img id="fig0" style="height: 100%;"></h3>
-                            <p class="card-text">Temperature: <a id="temp"></a> &#8457;</p>
-                            <p class="card-text">Humidity: <a id="humid"></a> %</p>
-                            <p class="card-text">Wind Speed: <a id="wind"></a> mph</p>
-                            <p class="card-text">UV Index: <span id="uv"></span></p>
+                            <h2><a id="main-city" class="card-title"></a> (<a id="day0"></a>) <img id="fig0"
+                                    style="height: 100%;"></h2>
+                            <h4 class="card-text">Temperature: <a id="temp"></a> &#8457;</h4>
+                            <h4 class="card-text">Humidity: <a id="humid"></a> %</h4>
+                            <h4 class="card-text">Wind Speed: <a id="wind"></a> mph</h4>
+                            <h4 class="card-text">UV Index: <span id="uv"></span></h4>
                         </div>
                     </div>
                 </div>
+
+                <!-- Next Days -->
                 <div class="row mx-auto">
                     <div class="card-group" style="width: 100%;">
                         <div class="card text-white bg-info">
@@ -61,7 +87,7 @@
                                 <h5 id="day2" class="card-title"></h5>
                                 <img id="fig2" style="width: 25%;">
                                 <p class="card-text">Temperature: <a id="temp2"></a> &#8457;</p>
-                                <p class="card-text">Humidity: <a id="humid2"></a> %</p>                            
+                                <p class="card-text">Humidity: <a id="humid2"></a> %</p>
                             </div>
                         </div>
                         <div class="card text-white bg-info">
@@ -94,19 +120,21 @@
         </div>
     </div>
 
-    <div id="spinner" class="text-center" style="display: none;">
-        <div class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div>
 
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <script src="script.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initialize&key=AIzaSyCVgy0PNDkcyuJqKIbFbXEOdho0ydEQ9yo&libraries=geometry"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?callback=initialize&key=AIzaSyCVgy0PNDkcyuJqKIbFbXEOdho0ydEQ9yo&libraries=geometry"></script>
 </body>
+
 </html>
